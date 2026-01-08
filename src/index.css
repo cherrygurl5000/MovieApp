@@ -1,3 +1,7 @@
+.smaller {
+  font-size: smaller;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,4 +19,6 @@ body {
 }
 .card-title {
   color: ghostwhite !important;
+  white-space: nowrap;
+  overflow: scroll;
 }/*# sourceMappingURL=index.css.map */

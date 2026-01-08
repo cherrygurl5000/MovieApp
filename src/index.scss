@@ -9,6 +9,10 @@ $ghost: ghostwhite;
     box-sizing: border-box;
 }
 
+.smaller {
+    font-size: smaller;
+}
+
 * {
     @include resets;
     color: $ghost;
@@ -28,6 +32,8 @@ body {
 .card {
     &-title {
         color: $ghost !important;
+        white-space: nowrap;
+        overflow: scroll;
     }
 
     background-color: $darkerPink !important;
