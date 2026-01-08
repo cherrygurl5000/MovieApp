@@ -1,5 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
 .smaller {
   font-size: smaller;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroImg {
+  position: relative;
+  height: 130px;
+}
+.heroImg .heroFigs {
+  padding: 0;
+  background-color: yellow;
+  width: 100px;
+  max-width: 100px;
+  height: 130px;
+  max-height: 130px;
+  border-radius: 5px;
+  position: relative;
+}
+.heroImg .heroFigs:first-child {
+  background-color: green;
+  transform: rotate(-7deg);
+  left: 40px;
+  top: 5px;
+}
+.heroImg .heroFigs:nth-child(2) {
+  background-color: blue;
+  z-index: 10;
+}
+.heroImg .heroFigs:nth-child(3) {
+  background-color: purple;
+  transform: rotate(7deg);
+  right: 40px;
+  top: 5px;
+}
+.heroImg .heroFigs img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
 }
 
 * {
@@ -21,4 +67,27 @@ body {
   color: ghostwhite !important;
   white-space: nowrap;
   overflow: scroll;
+}
+
+header h1 {
+  color: #4d004d !important;
+  font-family: "Chewy", system-ui;
+}
+
+.searchBtn {
+  background-color: rgb(204, 0, 204);
+  border: inset 2px #dee2e6;
+  border-right: none;
+  font-family: "DM Sans", sans-serif !important;
+}
+
+input {
+  color: ghostwhite;
+  background-color: rgb(204, 0, 204);
+  border: inset 2px #dee2e6;
+  border-left: none;
+  min-width: 300px;
+  width: 400px;
+  padding-left: 10px;
+  font-family: "DM Sans", sans-serif !important;
 }/*# sourceMappingURL=index.css.map */

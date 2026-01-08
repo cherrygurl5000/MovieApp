@@ -1,7 +1,16 @@
+// Imports
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
 // Variables
 $darkPink: rgb(204, 0, 204);
 $darkerPink: #4d004d;
+$inputPink: #800080;
 $ghost: ghostwhite;
+$chewy: 'Chewy', system-ui;
+$bebas: 'Bebas Neue', sans-serif;
+$dmsans: 'DM Sans', sans-serif;
 
 @mixin resets {
     margin: 0;
@@ -11,6 +20,50 @@ $ghost: ghostwhite;
 
 .smaller {
     font-size: smaller;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.heroImg {
+    position: relative;
+    height: 130px;
+    .heroFigs {
+        padding: 0;
+        background-color: yellow;
+        width: 100px;
+        max-width: 100px;
+        height: 130px;
+        max-height: 130px;
+        border-radius: 5px;
+        position: relative;
+
+        &:first-child {
+            background-color: green;
+            transform: rotate(-7deg);
+            left: 40px;
+            top: 5px;
+        }
+        &:nth-child(2) {
+            background-color: blue;
+            z-index: 10;
+        }
+        &:nth-child(3) {
+            background-color: purple;
+            transform: rotate(7deg);
+            right: 40px;
+            top: 5px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+    }
 }
 
 * {
@@ -37,4 +90,29 @@ body {
     }
 
     background-color: $darkerPink !important;
+}
+
+header {
+    h1 {
+        color: $darkerPink !important;
+        font-family: $chewy;
+    }
+}
+
+.searchBtn {
+    background-color: $darkPink;
+    border: inset 2px #dee2e6;
+    border-right: none;
+    font-family: $dmsans !important;
+}
+
+input {
+    color: $ghost;
+    background-color: $darkPink;
+    border: inset 2px #dee2e6;
+    border-left: none;
+    min-width: 300px;
+    width: 400px;
+    padding-left: 10px;
+    font-family: $dmsans !important;
 }

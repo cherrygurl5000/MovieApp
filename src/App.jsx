@@ -1,9 +1,12 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
+import '@fortawesome/fontawesome-free/js/all.js';
 import MovieCard from './components/MovieCard';
 import Search from './components/Search';
 import Spinner from './components/Spinner';
+import HeroImg from './components/HeroImg';
+import { useState } from 'react';
 
 function App() {
     const posterLink = [
@@ -41,8 +44,20 @@ function App() {
             original_language: 'French'
         }
     ];
+    const tester = [];
+
+    // State variables
+    const [searchTerm, setSearchTerm] = useState('');
     return (
         <>
+            <header>
+                <HeroImg movies={movies} defLink={posterLink[0]} />
+                <h1>
+                    Find <span className="gradient-text">Movies</span> You'll
+                    Love Without the Hassle
+                </h1>
+            </header>
+            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <h2>Trending List :</h2>
             <div className="row d-flex justify-content-center">
                 {movies.map((movie, index) => (
@@ -71,7 +86,6 @@ function App() {
                 This text is quite long, and will be truncated once displayed.
             </span>
 
-            <Search />
             <Spinner />
         </>
     );

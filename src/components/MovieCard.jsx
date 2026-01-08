@@ -22,7 +22,7 @@ export default function MovieCard({
     }, []);
 
     return (
-        <div className="text-center col col-lg-3 my-4">
+        <div className="text-center col col-md-4 col-lg-3 my-4">
             <div className="card " style={{ width: '18rem', height: '100%' }}>
                 <img
                     src={poster_path}
