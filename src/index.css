@@ -75,7 +75,7 @@ header h1 {
 }
 
 .searchBtn {
-  background-color: rgb(204, 0, 204);
+  background-color: #4d004d;
   border: inset 2px #dee2e6;
   border-right: none;
   font-family: "DM Sans", sans-serif !important;
@@ -83,7 +83,7 @@ header h1 {
 
 input {
   color: ghostwhite;
-  background-color: rgb(204, 0, 204);
+  background-color: #4d004d;
   border: inset 2px #dee2e6;
   border-left: none;
   min-width: 300px;

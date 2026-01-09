@@ -23,14 +23,14 @@ export default function MovieCard({
 
     return (
         <div className="text-center col col-md-4 col-lg-3 my-4">
-            <div className="card " style={{ width: '18rem', height: '100%' }}>
+            <div className="card " style={{ width: '15rem', height: '100%' }}>
                 <img
                     src={poster_path}
                     className="card-img-top border-bottom"
                     alt="{title} Poster"
                     style={{
-                        width: '18rem',
-                        height: '18rem',
+                        width: '15rem',
+                        height: '15rem',
                         position: 'relative',
                         left: '-2rem',
                         top: '-2rem'
