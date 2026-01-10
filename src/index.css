@@ -76,6 +76,24 @@ body {
   color: ghostwhite !important;
   white-space: nowrap;
   overflow: scroll;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-thickness: 3px;
+  text-decoration-color: rgb(204, 0, 204);
+  border-bottom: 8px solid transparent;
+  text-underline-offset: 12px;
+  height: 40%;
+}
+.card .no-underline {
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+  line-height: 1.7rem;
+}
+.card-body {
+  font-family: "Chewy", system-ui !important;
+}
+.card-text {
+  height: 40%;
 }
 
 header h1 {
@@ -99,4 +117,14 @@ input {
   width: 400px;
   padding-left: 10px;
   font-family: "DM Sans", sans-serif !important;
+}
+
+.fa-circle {
+  font-size: 5px;
+  padding-bottom: 2px;
+}
+
+.fa-star {
+  color: #ff0 !important;
+  font-size: small;
 }/*# sourceMappingURL=index.css.map */

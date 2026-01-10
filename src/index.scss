@@ -8,6 +8,7 @@ $darkPink: rgb(204, 0, 204);
 $darkerPink: #4d004d;
 $inputPink: #800080;
 $ghost: ghostwhite;
+$yellow: #ff0;
 $chewy: 'Chewy', system-ui;
 $bebas: 'Bebas Neue', sans-serif;
 $dmsans: 'DM Sans', sans-serif;
@@ -96,6 +97,24 @@ body {
         color: $ghost !important;
         white-space: nowrap;
         overflow: scroll;
+        text-decoration: underline;
+        text-decoration-style: wavy;
+        text-decoration-thickness: 3px;
+        text-decoration-color: $darkPink;
+        border-bottom: 8px solid transparent;
+        text-underline-offset: 12px;
+        height: 40%;
+    }
+    .no-underline {
+        text-decoration-style: dotted;
+        text-underline-offset: 2px;
+        line-height: 1.7rem;
+    }
+    &-body {
+        font-family: $chewy !important;
+    }
+    &-text {
+        height: 40%;
     }
 
     background-color: $darkerPink !important;
@@ -124,4 +143,14 @@ input {
     width: 400px;
     padding-left: 10px;
     font-family: $dmsans !important;
+}
+
+.fa-circle {
+    font-size: 5px;
+    padding-bottom: 2px;
+}
+
+.fa-star {
+    color: $yellow !important;
+    font-size: small;
 }

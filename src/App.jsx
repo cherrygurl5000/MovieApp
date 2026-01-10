@@ -60,18 +60,6 @@ function App() {
         setErrorMessage('');
 
         try {
-            const langUsed = `${API_BASE_URL}/configuration/languages`;
-            const langResp = await fetch(langUsed, API_OPTIONS);
-            if (langResp.ok) {
-                const languages = await langResp.json();
-                setLanguages(languages.results || []);
-                // console.log(languages);
-            }
-        } catch {
-            console.log('Languages not loaded');
-        }
-
-        try {
             const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
             const response = await fetch(endpoint, API_OPTIONS);
             // throw new Error('Failing');
@@ -97,7 +85,6 @@ function App() {
     const [searchTerm, setSearchTerm] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [movieList, setMovieList] = useState([]);
-    const [languages, setLanguages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -126,25 +113,11 @@ function App() {
                                 movie={movie}
                                 key={movie.id}
                                 link={posterLink[0]}
-                                languages={languages}
                             />
                         ))}
                     </div>
                 )}
             </section>
-            {/* <h2>Trending List :</h2>
-            <div className="row d-flex justify-content-center">
-                {movies.map((movie, index) => (
-                    <MovieCard movie={movie} key={index} />
-                ))}
-            </div>
-
-            <h2>Popular: </h2>
-            <div className="row">
-                {movies.map((movie, index) => (
-                    <MovieCard movie={movie} key={index} />
-                ))}
-            </div> */}
         </>
     );
 }

@@ -2,41 +2,17 @@ import React from 'react';
 import { useLayoutEffect, useRef, useState } from 'react';
 
 export default function MovieCard({
-    movie: {
-        title,
-        vote_average,
-        poster_path,
-        release_date,
-        original_language
-    },
-    link,
-    languages
+    movie: { title, vote_average, poster_path, release_date },
+    link
 }) {
-    let idx = 0,
-        language = '';
-    if (languages) {
-        idx = languages
-            .map((item) => item.iso_639_1)
-            .indexOf(original_language);
-        console.log(idx, original_language, languages);
-        language = languages[idx] || 'Unknown';
-    }
-
     // Movie title text width
     const ref = useRef(null);
     const [width, setWidth] = useState(0);
     const [textWidth, setTextWidth] = useState(0);
 
-    // Language text width
-    const ref2 = useRef(null);
-    const [langWidth, setLangWidth] = useState(0);
-    const [langTextWidth, setLangTextWidth] = useState(0);
-
     useLayoutEffect(() => {
         setWidth(ref.current.offsetWidth);
         setTextWidth(ref.current.scrollWidth);
-        setLangWidth(ref.current.offsetWidth);
-        setLangTextWidth(ref.current.scrollWidth);
     }, []);
 
     return (
@@ -63,8 +39,8 @@ export default function MovieCard({
                         className={`card-title text-center pb-2 ${
                             textWidth > width
                                 ? textWidth > width * 2 - 10
-                                    ? 'fs-6 text-wrap mb-2 b-1'
-                                    : 'fs-4 overflow-visible pt-2 mb-3'
+                                    ? 'fs-6 text-wrap mb-2 b-1 overflow-visible no-underline'
+                                    : 'fs-4 overflow-visible pt-2 mb-2 d-flex justify-content-center'
                                 : 'fs-1'
                         }`}
                         ref={ref}
@@ -73,25 +49,17 @@ export default function MovieCard({
                     </h2>
                     <div className="card-text text-center">
                         <p>
-                            {vote_average ? vote_average.toFixed(1) : 'N/A'}{' '}
-                            Stars
+                            <span className="star">
+                                <i className="fa-solid fa-star"></i>
+                            </span>{' '}
+                            &nbsp;
+                            <i className="fa-solid fa-circle"></i> &nbsp;
+                            {vote_average ? vote_average.toFixed(1) : 'N/A'}
                         </p>
                         <p>
-                            Released:{' '}
                             {release_date
                                 ? release_date.split('-')[0]
                                 : 'Unknown'}
-                        </p>
-                        <p
-                            className={
-                                langTextWidth > langWidth
-                                    ? 'pt-1 pb-2 mb-4 small'
-                                    : ''
-                            }
-                            ref={ref2}
-                        >
-                            Original Language: {}
-                            {console.log(language)}
                         </p>
                     </div>
                     <a href="#" className="btn btn-primary mt-2">
