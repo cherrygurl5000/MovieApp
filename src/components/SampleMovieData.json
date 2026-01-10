@@ -1,0 +1,23 @@
+{
+    "adult": false,
+    "backdrop_path": "/ebyxeBh56QNXxSJgTnmz7fXAlwk.jpg",
+    "genre_ids": [28, 878, 12],
+    "id": 1242898,
+    "original_language": "en",
+    "original_title": "Predator: Badlands",
+    "overview": "Cast out from his clan, a young Predator finds an unlikely ally in a damaged android and embarks on a treacherous journey in search of the ultimate adversary.",
+    "popularity": 720.5807,
+    "poster_path": "/pHpq9yNUIo6aDoCXEBzjSolywgz.jpg",
+    "release_date": "2025-11-05",
+    "title": "Predator: Badlands",
+    "video": false,
+    "vote_average": 7.6,
+    "vote_count": 1097
+}
+
+// Languages 
+{
+    "iso_639_1": "bi",
+    "english_name": "Bislama",
+    "name": ""
+  }

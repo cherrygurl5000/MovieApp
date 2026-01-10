@@ -2,8 +2,26 @@ import React from 'react';
 import { useLayoutEffect, useRef, useState } from 'react';
 
 export default function MovieCard({
-    movie: { title, vote_average, poster_path, release_date, original_language }
+    movie: {
+        title,
+        vote_average,
+        poster_path,
+        release_date,
+        original_language
+    },
+    link,
+    languages
 }) {
+    let idx = 0,
+        language = '';
+    if (languages) {
+        idx = languages
+            .map((item) => item.iso_639_1)
+            .indexOf(original_language);
+        console.log(idx, original_language, languages);
+        language = languages[idx] || 'Unknown';
+    }
+
     // Movie title text width
     const ref = useRef(null);
     const [width, setWidth] = useState(0);
@@ -25,7 +43,11 @@ export default function MovieCard({
         <div className="text-center col col-md-4 col-lg-3 my-4">
             <div className="card " style={{ width: '15rem', height: '100%' }}>
                 <img
-                    src={poster_path}
+                    src={
+                        poster_path
+                            ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                            : link
+                    }
                     className="card-img-top border-bottom"
                     alt="{title} Poster"
                     style={{
@@ -50,8 +72,16 @@ export default function MovieCard({
                         {title}
                     </h2>
                     <div className="card-text text-center">
-                        <p>{vote_average} Stars</p>
-                        <p>Released: {release_date}</p>
+                        <p>
+                            {vote_average ? vote_average.toFixed(1) : 'N/A'}{' '}
+                            Stars
+                        </p>
+                        <p>
+                            Released:{' '}
+                            {release_date
+                                ? release_date.split('-')[0]
+                                : 'Unknown'}
+                        </p>
                         <p
                             className={
                                 langTextWidth > langWidth
@@ -60,7 +90,8 @@ export default function MovieCard({
                             }
                             ref={ref2}
                         >
-                            Original Language: {original_language}
+                            Original Language: {}
+                            {console.log(language)}
                         </p>
                     </div>
                     <a href="#" className="btn btn-primary mt-2">

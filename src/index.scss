@@ -29,6 +29,15 @@ $dmsans: 'DM Sans', sans-serif;
     background-clip: text;
 }
 
+h2.gradient-text {
+    font-family: $chewy !important;
+    text-decoration: underline;
+    text-decoration-style: double;
+    text-decoration-thickness: 3px;
+    text-decoration-color: $darkerPink;
+    padding-bottom: 2px;
+}
+
 .heroImg {
     position: relative;
     height: 130px;

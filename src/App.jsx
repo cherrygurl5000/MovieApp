@@ -60,6 +60,18 @@ function App() {
         setErrorMessage('');
 
         try {
+            const langUsed = `${API_BASE_URL}/configuration/languages`;
+            const langResp = await fetch(langUsed, API_OPTIONS);
+            if (langResp.ok) {
+                const languages = await langResp.json();
+                setLanguages(languages.results || []);
+                // console.log(languages);
+            }
+        } catch {
+            console.log('Languages not loaded');
+        }
+
+        try {
             const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
             const response = await fetch(endpoint, API_OPTIONS);
             // throw new Error('Failing');
@@ -85,6 +97,7 @@ function App() {
     const [searchTerm, setSearchTerm] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [movieList, setMovieList] = useState([]);
+    const [languages, setLanguages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -101,13 +114,25 @@ function App() {
                 <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             </header>
             <section className="allMovies">
-                <h2>All Movies</h2>
-
-                {errorMessage && (
+                <h2 className="gradient-text">&nbsp;All Movies&nbsp;</h2>
+                {isLoading ? (
+                    <Spinner />
+                ) : errorMessage ? (
                     <p className=".alert-danger">{errorMessage}</p>
+                ) : (
+                    <div className="row d-flex justify-content-center">
+                        {movieList.map((movie) => (
+                            <MovieCard
+                                movie={movie}
+                                key={movie.id}
+                                link={posterLink[0]}
+                                languages={languages}
+                            />
+                        ))}
+                    </div>
                 )}
             </section>
-            <h2>Trending List :</h2>
+            {/* <h2>Trending List :</h2>
             <div className="row d-flex justify-content-center">
                 {movies.map((movie, index) => (
                     <MovieCard movie={movie} key={index} />
@@ -119,9 +144,7 @@ function App() {
                 {movies.map((movie, index) => (
                     <MovieCard movie={movie} key={index} />
                 ))}
-            </div>
-
-            <Spinner />
+            </div> */}
         </>
     );
 }
