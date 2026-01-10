@@ -7,6 +7,8 @@ import Search from './components/Search';
 import Spinner from './components/Spinner';
 import HeroImg from './components/HeroImg';
 import { useEffect, useState } from 'react';
+import { useDebounce } from 'react-use';
+import { updateSearchCount } from './appwrite';
 
 function App() {
     const posterLink = [
@@ -55,13 +57,26 @@ function App() {
         }
     };
 
-    const fetchMovies = async () => {
+    // State variables
+    const [searchTerm, setSearchTerm] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [movieList, setMovieList] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+    const [allMovies, setAllMovies] = useState('');
+
+    useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
+
+    const fetchMovies = async (query = '') => {
         setIsLoading(true);
         setErrorMessage('');
 
         try {
-            const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+            const endpoint = query
+                ? `${API_BASE_URL}/search/movie?query=${encodeURI(query)}`
+                : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
             const response = await fetch(endpoint, API_OPTIONS);
+            setAllMovies(query ? 'Search Results' : 'All Movies');
             // throw new Error('Failing');
             if (!response.ok) throw new Error('Failed to fetch movies');
             const data = await response.json();
@@ -81,15 +96,12 @@ function App() {
         }
     };
 
-    // State variables
-    const [searchTerm, setSearchTerm] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
-    const [movieList, setMovieList] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
     useEffect(() => {
-        fetchMovies();
-    }, []);
+        fetchMovies(debouncedSearchTerm);
+    }, [debouncedSearchTerm]);
+
+    updateSearchCount();
+
     return (
         <>
             <header>
@@ -101,7 +113,7 @@ function App() {
                 <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             </header>
             <section className="allMovies">
-                <h2 className="gradient-text">&nbsp;All Movies&nbsp;</h2>
+                <h2 className="gradient-text">&nbsp;{allMovies}&nbsp;</h2>
                 {isLoading ? (
                     <Spinner />
                 ) : errorMessage ? (

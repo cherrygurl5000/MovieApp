@@ -25,7 +25,7 @@ export default function MovieCard({
                             : link
                     }
                     className="card-img-top border-bottom"
-                    alt="{title} Poster"
+                    alt={`${title} Poster`}
                     style={{
                         width: '15rem',
                         height: '15rem',
